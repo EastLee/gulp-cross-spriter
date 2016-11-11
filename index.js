@@ -142,7 +142,7 @@ var spriter = function(options) {
 
             // Keep track of each chunk and what declarations go with it
             // Because the positions/line numbers pertain to that chunk only
-            var chunkPathReg = /^.*\/(.*?)\.(?:css)$/;
+            var chunkPathReg = /^.*[\/\\]+(.*?)\.(?:css)$/;
             var chunkKey = chunkPathReg.exec(chunk.path)[1];
             if (!chunkList[chunkKey]) {
                 chunkList[chunkKey] = chunk;

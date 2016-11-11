@@ -78,4 +78,4 @@ gulp.task('css', function() {
  	 - `cssPath`: string - 生成css的路径，css名字沿用源文件名字，如果想改名，在此插件之前完成
  	 	 - 无默认值: 必填
 
-相关配置参数可以参考[spritesmith](https://www.npmjs.com/package/spritesmith)和[gulp-css-spriter](https://www.npmjs.com/package/gulp-css-spriter)
+以上路径都是相对路径，相关配置参数可以参考[spritesmith](https://www.npmjs.com/package/spritesmith)和[gulp-css-spriter](https://www.npmjs.com/package/gulp-css-spriter)
