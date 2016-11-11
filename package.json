@@ -1,0 +1,37 @@
+{
+  "name": "gulp-cross-spriter",
+  "version": "1.0.0",
+  "description": "多文件间交叉生成雪碧图",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^2.11.0",
+    "extend": "^2.0.1",
+    "gulp-util": "^3.0.7",
+    "css": "^2.2.1",
+    "spritesmith": "^1.5.0",
+    "fs-extra": "^0.14.0",
+    "through2": "^0.6.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EastLee/gulp-cross-spriter.git"
+  },
+  "keywords": [
+    "sass",
+    "spritesheet",
+    "cross",
+    "sprite",
+    "gulp",
+    "css"
+  ],
+  "author": "Eastlee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EastLee/gulp-cross-spriter/issues"
+  },
+  "homepage": "https://github.com/EastLee/gulp-cross-spriter#readme"
+}
