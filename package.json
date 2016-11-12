@@ -1,6 +1,6 @@
 {
   "name": "gulp-cross-spriter",
-  "version": "1.0.1",
+  "version": "1.2.2",
   "description": "多文件间交叉生成雪碧图",
   "main": "index.js",
   "dependencies": {

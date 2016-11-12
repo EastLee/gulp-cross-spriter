@@ -29,6 +29,11 @@
 	height: 1000px;
 	background-image: url("../img/flux0.png?sprite=index");
 }
+.com{
+	width: 1000px;
+	height: 1000px;
+	background-image: url("../img/flux1.png?sprite=main");
+}
 ```
 
 ```js
@@ -36,19 +41,19 @@ var gulp = require('gulp');
 var spriter = require('gulp-cross-spriter');
 
 gulp.task('css', function() {
-	return gulp.src('./src/css/styles.css')
+	return gulp.src('./src/css/styles.css')//源文件的路径，可以是多文件
 		.pipe(spriter({
+			//以上面的css为例，合成后的雪碧图名字分别为index和main，插件会自动拼接到下面的路径
+			'spriteSheet': './dist/img',//生成雪碧图存放的路径
 
-			'spriteSheet': './dist/images',
+			'pathToSpriteSheetFromCSS': '../img',//替换原来图片的路径后的雪碧图在css中的路径
 
-			'pathToSpriteSheetFromCSS': '../img',
-
-			'cssPath': '../dist/css',
+			'cssPath': './dist/css',//生成css文件的路径，会把多个文件放在一个目录下
 
 			'spritesmithOptions': {
                 'algorithm': "top-down",
                 'padding': 50
-            }
+            }//参考spritesmith的配置
 
 		}))
 });
@@ -79,3 +84,7 @@ gulp.task('css', function() {
  	 	 - 无默认值: 必填
 
 以上路径都是相对路径，相关配置参数可以参考[spritesmith](https://www.npmjs.com/package/spritesmith)和[gulp-css-spriter](https://www.npmjs.com/package/gulp-css-spriter)
+
+# 感谢
+
+感谢[hello-sunbaixin](https://github.com/hello-sunbaixin)和[leeww](https://github.com/leeww)提供的需求和建议！
