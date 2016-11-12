@@ -47,7 +47,12 @@ var spriter = function(options) {
         'spritesmithOptions': {},
         // Used to format output CSS
         // You should be using a separate beautifier plugin
-        'outputIndent': '\t'
+        'outputIndent': '\t',
+        'absolutePathToSpriteSheetFromCSS': {
+            sKey: false,
+            absolutePath: '',
+            specialPath: {}
+        }
     };
 
     var settings = extend({}, defaults, options);
@@ -206,7 +211,7 @@ var spriter = function(options) {
                         obj[i + '?sprite=' + _n] = v.coordinates[i];
                     }
                     var str = settings.pathToSpriteSheetFromCSS.substr(-1, 1) == '/' ? settings.pathToSpriteSheetFromCSS + v.key : settings.pathToSpriteSheetFromCSS + '/' + v.key;
-                    transformedChunk = transformFileWithSpriteSheetData(chunkList, obj, v.key, str, settings.includeMode, settings.silent, settings.outputIndent);
+                    transformedChunk = transformFileWithSpriteSheetData(chunkList, obj, v.key, str, settings.absolutePathToSpriteSheetFromCSS, settings.includeMode, settings.silent, settings.outputIndent);
                 });
 
                 return transformedChunk;

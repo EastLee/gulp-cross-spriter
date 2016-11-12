@@ -7,6 +7,7 @@
 * 可以选择合并的图片，不需要合并的不合并
 * 可以在多文件之间选择性的合并想要合并的图片
 * 支持在css文件中命名雪碧图
+* 更灵活的替换绝对路径
 
 # 缺点
 
@@ -53,7 +54,19 @@ gulp.task('css', function() {
 			'spritesmithOptions': {
                 'algorithm': "top-down",
                 'padding': 50
-            }//参考spritesmith的配置
+            },//参考spritesmith的配置
+
+			'absolutePathToSpriteSheetFromCSS':{//把雪碧图的路径变成绝对路径
+                'sKey':true,//替换的开关
+				//absolutePath为公共的替换路径，如果在specialPath中不存在特殊处理，就都替换为此路径
+                'absolutePath':'http://img.google.com/static/image/',
+                'specialPath':{//特殊的替换路径
+					//雪碧图名称为index的替换路径
+                    'index':'http://img.google.com/static/index/',
+					//雪碧图名称为main的替换路径
+                    'main':'http://img.google.com/static/main/'
+                }
+            }
 
 		}))
 });
@@ -82,8 +95,12 @@ gulp.task('css', function() {
 		 - padding: number
  	 - `cssPath`: string - 生成css的路径，css名字沿用源文件名字，如果想改名，在此插件之前完成
  	 	 - 无默认值: 必填
+	 - `absolutePathToSpriteSheetFromCSS`: object - 把雪碧图的路径变成绝对路径
+	 	 - `sKey`: boolean - 此项功能的开关，默认为false，设置为true，就会替换
+		 - `absolutePath`: string - 雪碧图的公共绝对路径，如果没有特殊处理就会应用此项，不加图片名称
+		 - `specialPath`: object - 特殊处理雪碧图的绝对路径，key为雪碧图的名称，value为对应的绝对路径不包含雪碧图名称
 
-以上路径都是相对路径，相关配置参数可以参考[spritesmith](https://www.npmjs.com/package/spritesmith)和[gulp-css-spriter](https://www.npmjs.com/package/gulp-css-spriter)
+`pathToSpriteSheetFromCSS`和`absolutePathToSpriteSheetFromCSS`的功能有些许重叠，不过建议在开发时把`pathToSpriteSheetFromCSS`设置为相对路径，在上线前用`absolutePathToSpriteSheetFromCSS`中的绝对路径替换。此功能只能替换拥有`sprite=name`字符串的路径，如果想替换其他的路径，可以在其他路径上加上`sprite=name`,name为原图片的名字，这样即使生成了雪碧图，也还是原来的图片。相关配置参数可以参考[spritesmith](https://www.npmjs.com/package/spritesmith)和[gulp-css-spriter](https://www.npmjs.com/package/gulp-css-spriter)
 
 # 感谢
 
